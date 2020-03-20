@@ -1,0 +1,118 @@
+{
+  "alice": {
+    "color": "amethyst",
+    "messages": {
+      "2020-02-19T17:00:00.000000": "Hello Favorite World",
+      "2020-02-20T19:42:48.545860": "Ring ring ring."
+    },
+    "things": [
+      "apples",
+      "anchovies",
+      "aardvarks"
+    ]
+  },
+  "bob": {
+    "color": "blue",
+    "things": [
+      "bananas",
+      "black olives",
+      "birds"
+    ]
+  },
+  "c3p0": {
+    "color": "clear",
+    "things": [
+      "carrots",
+      "celery",
+      "cats"
+    ]
+  },
+  "daria": {
+    "color": "sarcasm",
+    "things": [
+      "durian",
+      "doritos",
+      "dingos"
+    ]
+  },
+  "eve": {
+    "color": "envy",
+    "things": [
+      "eggplant",
+      "evil",
+      "england"
+    ]
+  },
+  "frodo": {
+    "color": "gold",
+    "things": [
+      "fiji apples",
+      "fries",
+      "falcon"
+    ]
+  },
+  "gman": {
+    "color": "black",
+    "things": [
+      "gfruit",
+      "gbacon",
+      "gdog"
+    ]
+  },
+  "helloworld": {
+    "color": "highlighter",
+    "things": [
+      "hope",
+      "horseradish",
+      "hoppers"
+    ]
+  },
+  "inot1orl": {
+    "color": "indigo",
+    "things": [
+      "incredible raisins",
+      "ink",
+      "itty bitty insects"
+    ]
+  },
+  "jupiter": {
+    "color": "jade",
+    "things": [
+      "justice",
+      "jet fuel",
+      "jackets that are yellow"
+    ]
+  },
+  "kojima": {
+    "color": "kale",
+    "things": [
+      "kames that are films",
+      "komedy",
+      "komplications"
+    ]
+  },
+  "lamda": {
+    "color": "lime",
+    "things": [
+      "lichee",
+      "lingenberries",
+      "lions"
+    ]
+  },
+  "mrgreen": {
+    "color": "marigold",
+    "things": [
+      "mangos",
+      "mozzarella",
+      "mouserat"
+    ]
+  },
+  "notahacker": {
+    "color": "none",
+    "things": [
+      "null",
+      "nil",
+      "nan"
+    ]
+  }
+}

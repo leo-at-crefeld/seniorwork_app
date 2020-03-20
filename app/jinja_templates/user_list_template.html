@@ -1,0 +1,52 @@
+<head>
+	<style type="">
+		table, th, td {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>All Users</th>
+				<th>Favorite Color</th>
+				<th>Mod Time</th>
+				<th>Message</th>
+				<th>Message Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for name, profile in users.items() %}
+				<tr>
+					<td>
+						<a href="{{ url_for('user_profile', username=name) }}"/>{{ name }}</a>
+					</td>
+					<td>
+						{{ profile['color'] }}
+					</td>
+					<td>
+						{{ profile['mod_time'] if profile['mod_time'] else "---" }}
+					</td>
+					{% if profile['messages'] %}
+						{% set message_time = get_latest_message(name) %}
+						<td>
+							{{ message_time }}
+						</td>
+						<td>
+							{{ profile['messages'][message_time] }}
+						</td>
+					{% else %}
+						<td>---</td>
+						<td>---</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>{{ users.keys()|length }} total users</th>
+			</tr>
+		</tfoot>
+	</table>
+</body>
