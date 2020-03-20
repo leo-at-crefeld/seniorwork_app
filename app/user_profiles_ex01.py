@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, abort, redirect, url_for
 import json
 import datetime
 
-app = Flask(__name__)
+from app import app
 
 def load_json():
 	global user_profiles
@@ -102,6 +102,3 @@ def put_message(username, timestamp, body):
 @app.route('/make_coffee/')
 def make_coffee():
 	abort(418)
-
-if __name__ == '__main__':
-	app.run(debug=True)
