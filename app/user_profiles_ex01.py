@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, abort, redirect, url_for
 import json
 import datetime
 
-app = Flask(__name__, template_folder='jinja_templates')
+app = Flask(__name__)
 
 def load_json():
 	global user_profiles
