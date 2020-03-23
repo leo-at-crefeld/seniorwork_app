@@ -3,15 +3,31 @@ import json
 import datetime
 
 from app import app
+from app.models import Person, Message
 
 def load_json():
 	global user_profiles
+	user_profiles = dict()
+	for person in Person.query.all():
+	        data = dict()
+	        data["id"] = person.id
+	        data["color"] = person.color
+	        msgs = dict()
+	        for msg in person.messages.all():
+	                msgs[msg.timestamp.isoformat()] = msg.body
+	        data["messages"] = msgs
+	        user_profiles[person.username] = data
+	"""
 	with open('user_profiles_ex01.json') as f:
 		user_profiles = json.load(f)
+	"""
 
 def save_profiles():
+	pass
+	"""
 	with open('user_profiles_ex01.json', 'w') as f:
 		json.dump(user_profiles, f, indent=2)
+	"""
 
 @app.before_request
 def before_request():
