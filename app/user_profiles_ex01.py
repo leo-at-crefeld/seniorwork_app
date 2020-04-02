@@ -1,4 +1,6 @@
 from flask import Flask, request, render_template, abort, redirect, url_for
+from app.models import Person
+from app import db
 import json
 import datetime
 
@@ -98,6 +100,11 @@ def put_message(username, timestamp, body):
 		abort(400, 'Invalid timestamp format')
 	user_profiles[username]['messages'][timestamp] = body
 	save_profiles()
+
+def add_user(username, color):
+	user = Person(username=username, color=color)
+	db.session.add(user)
+	db.session.commit()
 
 @app.route('/make_coffee/')
 def make_coffee():
