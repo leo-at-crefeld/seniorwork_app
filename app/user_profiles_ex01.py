@@ -15,6 +15,9 @@ def save_profiles():
 	with open('user_profiles_ex01.json', 'w') as f:
 		json.dump(user_profiles, f, indent=2)
 
+def user_dict_from_model(person):
+	return {'color': person.color}
+
 @app.before_request
 def before_request():
 	load_json()
