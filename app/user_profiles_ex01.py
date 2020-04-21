@@ -16,7 +16,10 @@ def save_profiles():
 		json.dump(user_profiles, f, indent=2)
 
 def user_dict_from_model(person):
-	return {'color': person.color}
+	messages = dict()
+	for message in person.messages.all():
+		messages[message.timestamp.isoformat()] = message.body
+	return {'color': person.color, 'messages': messages}
 
 @app.before_request
 def before_request():
