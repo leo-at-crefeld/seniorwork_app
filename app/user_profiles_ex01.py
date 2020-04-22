@@ -8,8 +8,10 @@ from app import app
 
 def load_json():
 	global user_profiles
-	with open('user_profiles_ex01.json') as f:
-		user_profiles = json.load(f)
+	user_profiles = dict()
+	for p in Person.query.all():
+		profile = user_dict_from_model(p)
+		user_profiles[p.username] = profile
 
 def save_profiles():
 	with open('user_profiles_ex01.json', 'w') as f:
