@@ -1,0 +1,46 @@
+<style type="text/css">
+	table, th, td {
+	border: 1px solid black;
+}
+</style>
+<h2>{{ student_name }}</h2>
+<table>
+	<tr>
+		<th>Category:</th>
+		{% for key, value in student.items() %}
+			<th colspan="{{ value.items()|length }}">{{ key }}</th>
+		{% endfor %}
+	</tr>
+	<tr>
+		<th>Exhibition</th>
+		{% for key, value in student.items() %}
+			{% for name, exhibition in value.items() %}
+				<th>{{ name }}</th>
+			{% endfor %}
+		{% endfor %}
+	</tr>
+	<tr>
+		<th>Time Started:</th>
+		{% for category in student.values() %}
+			{% for exhibition in category.values() %}
+				<td>{{ exhibition["Started"] }}</td>
+			{% endfor %}
+		{% endfor %}
+	</tr>
+	<tr>
+		<th>Time In Progress:</th>
+		{% for category in student.values() %}
+			{% for exhibition in category.values() %}
+				<td>{{ exhibition["In Progress"] }}</td>
+			{% endfor %}
+		{% endfor %}
+	</tr>
+	<tr>
+		<th>Time Passed:</th>
+		{% for category in student.values() %}
+			{% for exhibition in category.values() %}
+				<td>{{ exhibition["Passed"] }}</td>
+			{% endfor %}
+		{% endfor %}
+	</tr>
+</table>
