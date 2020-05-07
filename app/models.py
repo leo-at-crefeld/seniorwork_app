@@ -5,7 +5,7 @@ class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_name = db.Column(db.String(64), index=True)
     projects = db.relationship('Project', backref='student', lazy='dynamic')
-    advisor_id = db.Column(db.Integer, db.ForeignKey('advisor.id'))
+    advisor_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
     def __repr__(self):
         pass
@@ -21,6 +21,7 @@ class Teacher(db.Model):
 class Exhibition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exhibition_name = db.Column(db.String(64), index=True, unique=True)
+    template_id = db.Column(db.Integer, db.ForeignKey('project.id'))
 
     def __repr__(self):
         pass
@@ -28,8 +29,10 @@ class Exhibition(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
+    exhibition_id = db.Column(db.Integer, db.ForeignKey('exhibition.id'))
     title = db.Column(db.String(64), index=True) # title assigned by student
-    stage = db.relationship('Stage', backref='project', lazy='dynamic')
+    stages = db.relationship('Stage', backref='project', lazy='dynamic')
+    completetion_status = db.Column(db.Boolean, index=True)
 
     def __repr__(self):
         pass
@@ -37,9 +40,11 @@ class Project(db.Model):
 class Stage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
     timestamp = db.Column(db.DateTime, index=True)
     signer_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
     checked = db.Column(db.Boolean, index=True)
+    order = db.Column(db.Integer)
 
     def __repr__(self):
         pass
