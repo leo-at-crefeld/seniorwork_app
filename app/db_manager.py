@@ -19,7 +19,7 @@ def create_student(name, advisor_name):
 	s = Student()
 	s.student_name = name
 	# sqlalchemy.orm.exc.NoResultFound error will be thrown if teacher not found
-	s.advisor_id = Teacher.query.filter_by(teacher_name=teacher_name).one()
+	s.advisor_id = Teacher.query.filter_by(teacher_name=advisor_name).one()
 
 def create_exhibition(*args):
 	"""
