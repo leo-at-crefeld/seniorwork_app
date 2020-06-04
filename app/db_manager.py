@@ -19,7 +19,9 @@ def create_student(name, advisor_name):
 	s = Student()
 	s.student_name = name
 	# sqlalchemy.orm.exc.NoResultFound error will be thrown if teacher not found
-	s.advisor_id = Teacher.query.filter_by(teacher_name=advisor_name).one()
+	s.advisor_id = Teacher.query.filter_by(teacher_name=advisor_name).one().id
+	db.session.add(s)
+	db.session.commit()
 
 def create_exhibition(*args):
 	"""
@@ -29,10 +31,13 @@ def create_exhibition(*args):
 	"""
 	e = Exhibition()
 	e.exhibition_name = args[0]
+	db.session.add(e)
+
 
 	template = Project()
-	template.exhibition_id = exhibition.id
+	template.exhibition_id = e.id
 	template.title = "{}_template".format(e.exhibition_name)
+	db.session.add(template)
 
 	stages = args[1:]
 	for i in range(len(stages)):
@@ -40,3 +45,6 @@ def create_exhibition(*args):
 		s.project_id = template.id
 		s.name = stages[i]
 		s.order = i
+		db.session.add(s)
+
+	db.session.commit()
