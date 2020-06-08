@@ -32,7 +32,7 @@ class Project(db.Model):
     exhibition_id = db.Column(db.Integer, db.ForeignKey('exhibition.id'))
     title = db.Column(db.String(64), index=True) # title assigned by student
     stages = db.relationship('Stage', backref='project', lazy='dynamic')
-    completetion_status = db.Column(db.Boolean, index=True)
+    completion_status = db.Column(db.Boolean, index=True)
 
     def __repr__(self):
         return "<title {}, student_id {}, exhibition_id {}, completion_status {}".format(self.title, self.student_id, self.exhibition_id, self.completion_status)
