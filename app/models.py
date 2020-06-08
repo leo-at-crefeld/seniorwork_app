@@ -8,7 +8,7 @@ class Student(db.Model):
     advisor_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
     def __repr__(self):
-        pass
+        return "<student_name {}, advisor_id {}>".format(self.student_name, self.advisor_id)
 
 class Teacher(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +16,7 @@ class Teacher(db.Model):
     advisees = db.relationship('Student', backref='advisor', lazy='dynamic')
 
     def __repr__(self):
-        pass
+        return "<teacher_name {}>".format(self.teacher_name)
 
 class Exhibition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,7 +24,7 @@ class Exhibition(db.Model):
     template_id = db.Column(db.Integer, db.ForeignKey('project.id'))
 
     def __repr__(self):
-        pass
+        return "<exhibition_name {}, template_id {}".format(self.exhibition_name, self.template_id)
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,7 +35,7 @@ class Project(db.Model):
     completetion_status = db.Column(db.Boolean, index=True)
 
     def __repr__(self):
-        pass
+        return "<title {}, student_id {}, exhibition_id {}, completion_status {}".format(self.title, self.student_id, self.exhibition_id, self.completion_status)
 
 class Stage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -47,4 +47,4 @@ class Stage(db.Model):
     order = db.Column(db.Integer)
 
     def __repr__(self):
-        pass
+        return "<name {}, checked {}, timestamp {}, order {}, project_id {}, signer_id {}".format(self.name, self.checked, self.timestamp, self.order, self.project_id, self.signer_id)
